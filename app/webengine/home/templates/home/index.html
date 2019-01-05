@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>РУСМЕТ | Прием и вывоз лома</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/business-frontpage.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <!-- Bootstrap core JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+  </head>
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'main_page_url' %}">РУСМЕТ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#about">О КОМПАНИИ
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#price">ЦЕНЫ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#service">УСЛУГИ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contactus">КОНТАКТЫ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header with background image -->
+    <header class="business-header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h3 class="display-20 text-center text-black mt-4"><strong>Прием лома черных и цветных металловые</strong></h3>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Контент страницы -->
+    <div id="about" class="container">
+      <div class="row">
+        <div class="col-sm-8">
+          <h2 class="mt-4">Компания РУСМЕТ</h2>
+          <p>
+            Компания ООО "РУСМЕТ" принимает черный и цветной металл у частных сдатчиков и органазаций. Вы также можете заказать услуги демонтажа, резки, погрузки и вывоза лома с территории. Компания располагает личным автопарком и материально-технической базой для оперативной утилизации ненужных изделий из металла.
+          </p>
+          <p>
+            "РУСМЕТ" предлагает сдать металл и получить вознаграждение за прием сразу. Существует два варианта сотрудничества: скупка лома в оборудованном пункте или вывоз с территори. Предлагая помощь с погрузкой и транспортировкой металла, "РУСМЕТ" учитывает объем партии поставки. На объект выезжают грузчики и отправляется спецтранспорт.
+          </p>
+          <p>
+            <a class="btn btn-primary" href="#contactus">Написать нам &raquo;</a>
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <h2 class="mt-4">Контакты</h2>
+          <address>
+            <strong>ООО "РУСМЕТ"</strong>
+            <br>г. Сухой Лог
+            <br>ул. Кунарская 19А
+            <br>
+          </address>
+          <address>
+          <abbr>Тел:</abbr>
+          + 7 (963) 054-45-71<br>
+        <abbr>E-mail:</abbr>
+        <a href="mailto:3436877945@mail.ru">3436877945@mail.ru</a>
+      </address>
+    </div>
+  </div>
+  <!-- Services -->
+  <h2 id="service" class="text-center">Наши услуги</h2>
+  <div class="row text-center">
+    <div class="col-lg-3 col-md-6 mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{% static 'images/black-metall.jpg' %}" alt="image">
+        <div class="card-body">
+          <h4 class="card-title">Черный лом</h4>
+          <p class="text-center">
+            Черным металлоломом считаются железосодержащие изделия и отходы. К нему принято относить чугун, а также легированную, нержавеющую и конструкционную сталь.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{% static 'images/coloured scrap.jpg' %}" alt="image">
+        <div class="card-body">
+          <h4 class="card-title">Цветной лом</h4>
+          <p class="text-center">
+            Под цветным металлоломом принято понимать различные виды изделий и конструкций, которые непригодны к эксплуатации. Они изготавливаются из различных видов сплавов, за исключением железа.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{% static 'images/dilivery.jpg' %}" alt="image">
+        <div class="card-body">
+          <h4 class="card-title">Вывоз лома</h4>
+          <p class="card-text">
+            Мы занимаемся утилизацией и вывозом цветного и чёрного металлолома по всей Свердловской области. Своевременная и полная оплата гарантирована.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{% static 'images/reconstructed.jpeg' %}" alt="image">
+        <div class="card-body">
+          <h4 class="card-title">Демонтаж</h4>
+          <p class="card-text">Компания выполняет все виды демонтажных работ с последующим приемом металлолома всех видов. Высота и сложность конструкций не имеют значения.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Why us? -->
+  <h2 id="why" class="text-center">Почему именно мы?</h2>
+  <section class="features-icons text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i id="faicon1" class="fas fa-ruble-sign"></i>
+            </div>
+            <p class="lead mb-0">Широкий ассортимент закупаемого лома и конкурентноспособная цена</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i id="faicon2" class="fas fa-balance-scale"></i>
+            </div>
+            <p class="lead mb-0">Точные электронные весы</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i id="faicon3" class="far fa-map"></i>
+            </div>
+            <p class="lead mb-0">Удобное месторасположение, легко подъехать, большие площади</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i id="faicon4" class="fas fa-cash-register"></i>
+            </div>
+            <p class="lead mb-0">Расчет сразу после сдачи лома</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Prices table -->
+  <h2 id="price" class="text-center">Цены на лом</h2>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th class="text-center" scope="col">Вид лома</th>
+        <th class="text-center" scope="col">Цена за тонну, руб.</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for price in prices %}
+
+      <tr>
+        <th class="text-center" scope="row"> {{ price.scrap }} </th>
+        <td class="text-center"> {{ price.cost }} </td>
+      </tr>
+
+    {{ prices.date_refresh }}
+
+    {% endfor %}
+
+      <p>
+        Данные от {{ last_date }}
+      </p>
+
+    </tbody>
+  </table>
+  <!-- Feedback form -->
+  <div id="contactus" class="container">
+    <h2 id="reply" class="text-center">Свяжитесь с нами</h2><br />
+    <div class="row">
+      <div class="col-md-8">
+        <form action="/post" method="post">
+          <input class="form-control" name="name" placeholder="Имя..." /><br />
+          <input class="form-control" name="phone" placeholder="Телефон..." /><br />
+          <input class="form-control" name="email" placeholder="E-mail..." /><br />
+          <textarea class="form-control" name="text" placeholder="Сообщение..." style="height:150px;"></textarea><br />
+          <input class="btn btn-primary" type="submit" value="Отправить" />
+          <br /><br />
+        </form>
+      </div>
+      <div class="col-md-4">
+        <strong>Контакты:</strong><br />
+        ООО "РУСМЕТ"<br />
+        г. Сухой Лог<br />
+        ул. Кунарская 19А<br />
+        <br>
+        <address>
+        <abbr>Тел:</abbr>
+        + 7 (963) 054-45-71
+        <br>
+      <abbr>E-mail:</abbr>
+      <a href="mailto:3436877945@mail.ru">3436877945@mail.ru</a>
+    </address>
+  </div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+<div class="container">
+<p class="m-0 text-center text-white">Все права защищены &copy; "РУСМЕТ" 2018</p>
+</div>
+</footer>
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.business-header {
+  height: 50vh;
+  min-height: 300px;
+  background: url('../images/banner.jpg') center center no-repeat scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.card {
+  height: 100%;
+}
+
+.features-icons {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.features-icons .features-icons-item {
+  max-width: 20rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon {
+  height: 7rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon i {
+  font-size: 4.5rem;
+}
+
+.features-icons .features-icons-item:hover .features-icons-icon i {
+  font-size: 5rem;
+}
+
+#faicon1 {
+position: relative;
+left:100px;
+}
+
+#faicon2 {
+position: relative;
+left:80px;
+}
+
+#faicon3 {
+position: relative;
+left:80px;
+}
+
+#faicon4 {
+position: relative;
+left:80px;
+}
+
+.card:hover img{
+  opacity: 0.3;
+}
+
+#price, 
+#service {
+  padding: 10px;
+
+}
+
+#why {
+  padding-top: 60px;
+
+}
+
+.contact-form {
+    margin-top:70px;
+}
+
+#reply {
+  padding-top: 60px;
+
+}
+
