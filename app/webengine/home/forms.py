@@ -16,7 +16,7 @@ class PriceForm(forms.ModelForm):
     def clean_scrap(self):
         new_scrap = self.cleaned_data['scrap'].upper()
 
-        if Price.objects.filter(scrap__iexact=new_scrap).count():
-            raise ValidationError('Название лома должно быть уникальным! У вас уже имеется "{}"'.format(new_scrap))
+        # if Price.objects.filter(scrap__iexact=new_scrap).count():
+        #     raise ValidationError('Название лома должно быть уникальным! У вас уже имеется "{}"'.format(new_scrap))
         return new_scrap
 

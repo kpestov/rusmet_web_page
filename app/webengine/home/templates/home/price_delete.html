@@ -1,0 +1,26 @@
+{% extends 'home/index.html' %}
+
+{% block title %}
+    {{  block.super }} - Удаление металла "{{ price.scrap }}"
+{% endblock %}
+
+{% block content %}
+
+<div class="mt-4 container">
+    <div class="row">
+
+        <form class="col-md-8" action="{{ price.get_delete_url }}" method="post">
+
+            {% csrf_token %}
+
+            <h5 class="mb-4">Вы уверены, что хотите удалить <b>"{{ price.scrap }}"</b>?</h5>
+            <button class="btn btn-light"><a href="{% url 'price_create_url' %}">Отмена</a></button>
+            <button type="submit" class="btn btn-danger">Удалить</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

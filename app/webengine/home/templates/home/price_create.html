@@ -34,7 +34,39 @@
 
     </div>
 
-    {% include 'home/includes/price_table.html' %}
+    <!-- Prices table -->
+    <h2 id="price" class="text-center">Цены на лом</h2>
+    <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th class="text-center" scope="col">Вид лома</th>
+        <th class="text-center" scope="col">Цена за тонну, руб.</th>
+
+        <th class="text-center" scope="col">Редактирование</th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+    {% for price in prices %}
+
+      <tr>
+        <th class="text-center" scope="row"> {{ price.scrap }} </th>
+        <td class="text-center"> {{ price.cost }} </td>
+
+        <td class="text-center"> <a href="{{ price.get_update_url }}">Изменить</a> / <a href="{{ price.get_delete_url }}">Удалить</a> </td>
+
+      </tr>
+
+    {% endfor %}
+
+      <p>
+        Данные от {{ last_date }}
+      </p>
+
+    </tbody>
+    </table>
+
 
 </div>
 

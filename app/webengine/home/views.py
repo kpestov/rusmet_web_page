@@ -8,8 +8,12 @@ from .forms import PriceForm
 class HomePage(View):
     def get_last_updated_date(self):
         time = Price.objects.all()
-        timestamps = ['{}.{}.{}'.format(ts.updated.day, ts.updated.month, ts.updated.year) for ts in time]
-        last_updated_date = sorted(timestamps, key=lambda x: datetime.datetime.strptime(x, '%d.%m.%Y'), reverse=True)[0]
+        try:
+            timestamps = ['{}.{}.{}'.format(ts.updated.day, ts.updated.month, ts.updated.year) for ts in time]
+            last_updated_date = sorted(timestamps, key=lambda x: datetime.datetime.strptime(x, '%d.%m.%Y'), reverse=True)[0]
+        except Exception:
+            last_updated_date = ''
+            return last_updated_date
         return last_updated_date
 
     def get(self, request):
@@ -33,6 +37,40 @@ class PriceCreate(View):
             bound_form.save()
             return redirect('price_create_url')
         return render(request, 'home/price_create.html', context={'form': bound_form})
+
+
+class PriceUpdate(View):
+    def get(self, request, scrap):
+        price = Price.objects.get(scrap__iexact=scrap)
+        bound_form = PriceForm(instance=price)
+        return render(request, 'home/price_update.html', context={'form': bound_form, 'price': price})
+
+    def post(self, request, scrap):
+        price = Price.objects.get(scrap__iexact=scrap)
+        bound_form = PriceForm(request.POST, instance=price)
+
+        if bound_form.is_valid():
+            bound_form.save()
+            return redirect('price_create_url')
+        return render(request, 'home/price_update.html', context={'form': bound_form})
+
+
+class PriceDelete(View):
+    def get(self, request, scrap):
+        price = Price.objects.get(scrap__iexact=scrap)
+        return render(request, 'home/price_delete.html', context={'price': price})
+
+    def post(self, request, scrap):
+        price = Price.objects.get(scrap__iexact=scrap)
+        price.delete()
+        return redirect('price_create_url')
+
+
+
+
+
+
+
 
 
 
