@@ -3,12 +3,15 @@ from .models import Price
 from django.core.exceptions import ValidationError
 
 
-class PriceForm(forms.Form):
-    scrap = forms.CharField(max_length=150)
-    cost = forms.FloatField()
+class PriceForm(forms.ModelForm):
+    class Meta:
+        model = Price
+        fields = ['scrap', 'cost']
 
-    scrap.widget.attrs.update({'class': 'form-control'})
-    cost.widget.attrs.update({'class': 'form-control'})
+        widgets = {
+            'scrap': forms.TextInput(attrs={'class': 'form-control'}),
+            'cost': forms.NumberInput(attrs={'class': 'form-control'})
+        }
 
     def clean_scrap(self):
         new_scrap = self.cleaned_data['scrap'].upper()
@@ -17,9 +20,3 @@ class PriceForm(forms.Form):
             raise ValidationError('Название лома должно быть уникальным! У вас уже имеется "{}"'.format(new_scrap))
         return new_scrap
 
-    def save(self):
-        new_price = Price.objects.create(
-            scrap=self.cleaned_data['scrap'],
-            cost=self.cleaned_data['cost']
-        )
-        return new_price
