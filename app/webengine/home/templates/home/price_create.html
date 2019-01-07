@@ -1,0 +1,41 @@
+{% extends 'home/index.html' %}
+
+{% block title %}
+    {{  block.super }} - Создание металла
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+
+        <form class="col-md-3 mt-4 mb-4 " action="{% url 'price_create_url' %}" method="post">
+
+            {% csrf_token %}
+
+            {% for field in form %}
+                <div class="form-group">
+                    {% if field.errors %}
+                        <div class="alert alert-danger">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+
+                    {{ field.label }}
+                    {{ field }}
+
+                </div>
+
+            {% endfor %}
+
+            <button type="submit" class="btn btn-primary">Создать металл и цену</button>
+
+        </form>
+
+    </div>
+
+    {% include 'home/includes/price_table.html' %}
+
+</div>
+
+{% endblock %}

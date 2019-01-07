@@ -3,5 +3,6 @@ from .views import *
 
 
 urlpatterns = [
-    path('', render_home_page, name='main_page_url')
+    path('', HomePage.as_view(), name='main_page_url'),
+    path('price/create', PriceCreate.as_view(), name='price_create_url')
 ]

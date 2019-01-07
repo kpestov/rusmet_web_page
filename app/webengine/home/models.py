@@ -1,10 +1,9 @@
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Price(models.Model):
     scrap = models.CharField(max_length=150, db_index=True)
-    cost = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+    cost = models.FloatField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
