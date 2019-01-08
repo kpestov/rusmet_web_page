@@ -34,7 +34,7 @@ class HomePage(View):
             sender = form.cleaned_data['email']
             subject = 'Site contact form'
             form_message = form.cleaned_data['message']
-            recepients = ['kp@plm-ural.ru']
+            recepients = ['kpestov91@gmail.com']
 
             contact_message = '{} {} {}'.format(customer_name, sender, form_message)
 
@@ -42,7 +42,7 @@ class HomePage(View):
                 send_mail(
                           subject,
                           contact_message,
-                          'kp@plm-ural.ru',
+                          'kpestov91@gmail.com',
                           recepients
                           )
 
