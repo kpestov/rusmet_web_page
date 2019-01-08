@@ -220,15 +220,25 @@
     <h2 id="reply" class="text-center">Свяжитесь с нами</h2><br />
     <div class="row">
       <div class="col-md-8">
-        <form action="/post" method="post">
-          <input class="form-control" name="name" placeholder="Имя..." /><br />
-          <input class="form-control" name="phone" placeholder="Телефон..." /><br />
-          <input class="form-control" name="email" placeholder="E-mail..." /><br />
-          <textarea class="form-control" name="text" placeholder="Сообщение..." style="height:150px;"></textarea><br />
-          <input class="btn btn-primary" type="submit" value="Отправить" />
-          <br /><br />
+        <form action="{% url 'main_page_url' %}" method="post">
+
+          {% csrf_token %}
+
+          {% for field in feedback_form %}
+              <div class="form-group">
+
+                {{field}}
+
+              </div>
+
+          {% endfor %}
+
+          <button class="btn btn-primary" type="submit">Отправить</button>
+          <br/><br/>
+
         </form>
       </div>
+
       <div class="col-md-4">
         <strong>Контакты:</strong><br />
         ООО "РУСМЕТ"<br />

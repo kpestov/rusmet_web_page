@@ -46,6 +46,7 @@ class ObjectUpdateMixin:
 class ObjectDeleteMixin:
     model = None
     template = None
+
     def get(self, request, scrap):
         obj = self.model.objects.get(scrap__iexact=scrap)
         return render(request, self.template, context={self.model.__name__.lower(): obj})
