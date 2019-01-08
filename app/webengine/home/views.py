@@ -1,8 +1,10 @@
 import datetime
 from django.views.generic import View
-from django.shortcuts import render, redirect
 from .models import Price
 from .forms import PriceForm
+from .utils import *
+
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class HomePage(View):
@@ -22,48 +24,36 @@ class HomePage(View):
         return render(request, 'home/index.html', context={'prices': prices, 'last_date': last_updated_date})
 
 
-class PriceCreate(View):
-    def get(self, request):
-        form = PriceForm()
-        prices = Price.objects.all()
-        last_updated_date = HomePage().get_last_updated_date()
-        return render(request, 'home/price_create.html', context={'form': form, 'prices': prices,
-                                                                  'last_date': last_updated_date})
-
-    def post(self, request):
-        bound_form = PriceForm(request.POST)
-
-        if bound_form.is_valid():
-            bound_form.save()
-            return redirect('price_create_url')
-        return render(request, 'home/price_create.html', context={'form': bound_form})
+class PriceCreate(LoginRequiredMixin, OblectCreateMixin, View):
+    super_model = HomePage()
+    model = Price
+    model_form = PriceForm
+    template = 'home/price_create.html'
+    raise_exception = True
 
 
-class PriceUpdate(View):
-    def get(self, request, scrap):
-        price = Price.objects.get(scrap__iexact=scrap)
-        bound_form = PriceForm(instance=price)
-        return render(request, 'home/price_update.html', context={'form': bound_form, 'price': price})
-
-    def post(self, request, scrap):
-        price = Price.objects.get(scrap__iexact=scrap)
-        bound_form = PriceForm(request.POST, instance=price)
-
-        if bound_form.is_valid():
-            bound_form.save()
-            return redirect('price_create_url')
-        return render(request, 'home/price_update.html', context={'form': bound_form})
+class PriceUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
+    model = Price
+    model_form = PriceForm
+    template = 'home/price_update.html'
+    raise_exception = True
 
 
-class PriceDelete(View):
-    def get(self, request, scrap):
-        price = Price.objects.get(scrap__iexact=scrap)
-        return render(request, 'home/price_delete.html', context={'price': price})
+class PriceDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
+    model = Price
+    template = 'home/price_delete.html'
+    raise_exception = True
 
-    def post(self, request, scrap):
-        price = Price.objects.get(scrap__iexact=scrap)
-        price.delete()
-        return redirect('price_create_url')
+
+# class PriceDelete(View):
+#     def get(self, request, scrap):
+#         price = Price.objects.get(scrap__iexact=scrap)
+#         return render(request, 'home/price_delete.html', context={'price': price})
+#
+#     def post(self, request, scrap):
+#         price = Price.objects.get(scrap__iexact=scrap)
+#         price.delete()
+#         return redirect('price_create_url')
 
 
 
