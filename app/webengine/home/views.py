@@ -32,17 +32,17 @@ class HomePage(View):
         if form.is_valid():
             customer_name = form.cleaned_data['customer_name']
             sender = form.cleaned_data['email']
-            subject = 'Site contact form'
+            subject = 'РУСМЕТ'
             form_message = form.cleaned_data['message']
             recepients = ['kpestov91@gmail.com']
 
-            contact_message = '{} {} {}'.format(customer_name, sender, form_message)
+            contact_message = 'ФИО: {}От: {}{}'.format(customer_name + '\n' + '\n', sender + '\n' + '\n', form_message)
 
             try:
                 send_mail(
                           subject,
                           contact_message,
-                          'kpestov91@gmail.com',
+                          sender,
                           recepients
                           )
 
