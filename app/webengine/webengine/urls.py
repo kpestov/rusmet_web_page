@@ -16,10 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
-from .views import redirect_home
+
 
 urlpatterns = [
-    path('', redirect_home),
     path('admin/', admin.site.urls),
-    path('home/', include('home.urls'))
+    path('', include('home.urls'))
 ]

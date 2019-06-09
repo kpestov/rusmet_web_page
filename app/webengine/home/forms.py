@@ -1,6 +1,5 @@
 from django import forms
 from .models import Price, FeedBack
-from django.core.exceptions import ValidationError
 
 
 class PriceForm(forms.ModelForm):
