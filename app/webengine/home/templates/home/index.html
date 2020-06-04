@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon"
+      type="image/png"
+      href="{% static 'images/favicon-16x16.png' %}">
     <title>
         {% block title %}
         РУСМЕТ | Прием и вывоз лома
@@ -35,25 +38,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
           integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-    <style type="text/css">
-      .admin-panel {
-        border: 1px solid #999;
-        border-radius: 10px;
-        position: fixed;
-        right: 50px;
-        bottom: 150px;
-        opacity: 0.7;
-        padding: 15px;
-       }
-
-       .admin-panel: hover {
-        opacity: 1;
-       }
-
-       .admin-panel a {
-        display: block;
-        margin: 5px 0;
-       }
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
     </style>
 
 </head>
@@ -62,7 +51,10 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'main_page_url' %}">РУСМЕТ</a>
+        <a class="navbar-brand" href="{% url 'main_page_url' %}">
+            <img src="static/images/favicon-32x32.png">
+            РУСМЕТ
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -120,7 +112,7 @@
                 отправляется спецтранспорт.
             </p>
             <p>
-                <a class="btn btn-primary" href="#contactus">Написать нам &raquo;</a>
+                <a class="btn btn-primary" href="#contactus">Связаться с нами &raquo;</a>
             </p>
         </div>
         <div class="col-sm-4">
@@ -238,31 +230,10 @@
 
     <!-- Feedback form -->
     <div id="contactus" class="container">
-        <h2 id="reply" class="text-center">Свяжитесь с нами</h2><br/>
+        <h2 id="reply">Наши контакты</h2><br/>
         <div class="row">
-            <div class="col-md-8">
-                <form action="{% url 'main_page_url' %}" method="post">
-
-                    {% csrf_token %}
-
-                    {% for field in feedback_form %}
-                    <div class="form-group">
-
-                        {{field}}
-
-                    </div>
-
-                    {% endfor %}
-
-                    <button class="btn btn-primary" type="submit">Отправить</button>
-                    <br/><br/>
-
-                </form>
-            </div>
-
             <div class="col-md-4">
-                <strong>Контакты:</strong><br/>
-                ООО "РУСМЕТ"<br/>
+                <strong>ООО "РУСМЕТ"</strong><br/>
                 г. Сухой Лог<br/>
                 ул. Кунарская 19А<br/>
                 <br>
@@ -286,20 +257,10 @@
     </div>
 </section>
 
-{% if request.user.is_authenticated and request.user.is_staff %}
-
-<!-- Admin panel -->
-<div class="admin-panel align-items-center">
-    <a href="/admin" class="btn btn-outline-info">Admin</a>
-    <a href="{% url 'price_create_url' %}" class="btn btn-primary">Редактирование таблицы</a>
-</div>
-
-{% endif %}
-
 <!-- Footer -->
 <footer class="footer py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Все права защищены &copy; "РУСМЕТ" 2019</p>
+        <p class="m-0 text-center text-white">Все права защищены &copy; "РУСМЕТ" 2020</p>
     </div>
 </footer>
 

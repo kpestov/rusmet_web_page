@@ -1,34 +1,15 @@
 from django.db import models
-from django.urls import reverse
-from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Price(models.Model):
-    scrap = models.CharField(max_length=150, db_index=True)
-    cost = models.FloatField()
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    scrap = models.CharField(max_length=150, db_index=True, verbose_name='металл')
+    cost = models.FloatField(verbose_name='цена')
+    created = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
+    updated = models.DateTimeField(auto_now=True, verbose_name='дата обновления')
 
-    def get_update_url(self):
-        return reverse('price_update_url', kwargs={'scrap': self.scrap})
-
-    def get_delete_url(self):
-        return reverse('price_delete_url', kwargs={'scrap': self.scrap})
+    class Meta:
+        verbose_name = 'металл'
+        verbose_name_plural = 'металлы'
 
     def __str__(self):
-        return 'kind of metall:{}, date creation:{}, date update:{}'.format(self.scrap, self.created, self.updated)
-
-
-class FeedBack(models.Model):
-    customer_name = models.CharField(max_length=150, db_index=True)
-    # phone = PhoneNumberField(null=False, blank=False, unique=True)
-    email = models.EmailField()
-    message = models.TextField()
-    date = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.customer_name
-
-
-
-
+        return self.scrap

@@ -1,12 +1,7 @@
 import datetime
-from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse
+from django.shortcuts import render
 from django.views.generic import View
 from .models import Price
-from .forms import PriceForm, FeedbackForm
-from .utils import *
-
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class HomePage(View):
@@ -21,62 +16,6 @@ class HomePage(View):
         return last_updated_date
 
     def get(self, request):
-        feedback_form = FeedbackForm()
         prices = Price.objects.all()
         last_updated_date = self.get_last_updated_date()
-        return render(request, 'home/index.html', context={'prices': prices, 'last_date': last_updated_date,
-                                                           'feedback_form': feedback_form})
-
-    def post(self, request):
-        form = FeedbackForm(request.POST)
-        if form.is_valid():
-            customer_name = form.cleaned_data['customer_name']
-            sender = form.cleaned_data['email']
-            subject = 'РУСМЕТ'
-            form_message = form.cleaned_data['message']
-            recepients = ['kpestov91@gmail.com']
-
-            contact_message = 'ФИО: {}От: {}{}'.format(customer_name + '\n' + '\n', sender + '\n' + '\n', form_message)
-
-            try:
-                send_mail(
-                          subject,
-                          contact_message,
-                          sender,
-                          recepients
-                          )
-
-            except BadHeaderError:
-                return HttpResponse('Invalid header found.')
-            return redirect('main_page_url')
-
-
-class PriceCreate(LoginRequiredMixin, OblectCreateMixin, View):
-    super_model = HomePage()
-    model = Price
-    model_form = PriceForm
-    template = 'home/price_create.html'
-    raise_exception = True
-
-
-class PriceUpdate(LoginRequiredMixin, ObjectUpdateMixin, View):
-    model = Price
-    model_form = PriceForm
-    template = 'home/price_update.html'
-    raise_exception = True
-
-
-class PriceDelete(LoginRequiredMixin, ObjectDeleteMixin, View):
-    model = Price
-    template = 'home/price_delete.html'
-    raise_exception = True
-
-
-
-
-
-
-
-
-
-
+        return render(request, 'home/index.html', context={'prices': prices, 'last_date': last_updated_date})
